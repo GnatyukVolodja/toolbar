@@ -1,0 +1,23 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "vue",
+  "main": "js/script.js",
+  "dependencies": {
+    "@types/bootstrap": "^5.0.0",
+    "@types/jquery": "^3.5.3",
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "pug": "^3.0.0",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "vavan",
+  "license": "ISC"
+}

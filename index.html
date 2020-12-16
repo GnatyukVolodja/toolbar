@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" lang="en">
+<head><title>table</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="style/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="style/jquery-ui.css">
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/table2excell.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row my-3 mx-2">
+        <ul class="p-0 m-0 d-flex align-items-center justify-content-between" id="sortable">
+            <li class="p-2 ui-state-default d-flex align-items-center justify-content-between"><a
+                    class="mx-2 button-style fa_save d-flex align-items-center justify-content-center"
+                    v-on:click="fa_save" href="javascript:void(0);" title="зберегти зміни"><i
+                    class="fas fa-save"></i></a><a
+                    class="mx-2 button-style print d-flex align-items-center justify-content-center" v-on:click="print"
+                    href="javascript:void(0);" title="роздрукувати таблицю"><i class="fa fa-print"></i></a><a
+                    class="mx-2 button-style download_table d-flex align-items-center justify-content-center"
+                    v-on:click="download_table" href="javascript:void(0);" title="завантажити таблицю"><i
+                    class="material-icons">get_app</i></a><a
+                    class="mx-2 button-style d-flex align-items-center justify-content-center" id="fullscreen"
+                    v-on:click="fullscreen" href="javascript:void(0);" title="на весь екран"><i class="material-icons">zoom_out_map</i></a>
+            </li>
+            <li class="p-2 ui-state-default d-flex align-items-center justify-content-between"><select
+                    class="col-8 mx-2" id="font" title="тип шрифту" v-on:change="font">
+                <!--select#font.col-2.mx-1(title="тип шрифту" v-model="value")-->
+                <option value="academy engraved let">academy engraved let</option>
+                <option value="algerian">algerian</option>
+                <option value="amaze">amaze</option>
+                <option selected value="arial">arial</option>
+                <option value="arial black">arial black</option>
+                <option value="balthazar">balthazar</option>
+                <option value="bankgothic lt bt">bankgothic lt bt</option>
+                <option value="bart">bart</option>
+                <option value="bimini">bimini</option>
+                <option value="book antiqua">book antiqua</option>
+                <option value="bookman old style">bookman old style</option>
+                <option value="braggadocio">braggadocio</option>
+                <option value="britannic bold">britannic bold</option>
+                <option value="brush script mt">brush script mt</option>
+                <option value="calibri">calibri</option>
+                <option value="cambria">cambria</option>
+                <option value="candara">candara</option>
+                <option value="century gothic">century gothic</option>
+                <option value="century schoolbook">century schoolbook</option>
+                <option value="chasm">chasm</option>
+                <option value="chicago">chicago</option>
+                <option value="colonna mt">colonna mt</option>
+                <option value="comic sans ms">comic sans ms</option>
+                <option value="commercialscript bt">commercialscript bt</option>
+                <option value="consolas">consolas</option>
+                <option value="constantia">constantia</option>
+                <option value="coolsville">coolsville</option>
+                <option value="corbel">corbel</option>
+                <option value="courier">courier</option>
+                <option value="courier new">courier new</option>
+                <option value="cursive">cursive</option>
+                <option value="dayton">dayton</option>
+                <option value="desdemona">desdemona</option>
+                <option value="estrangelo edessa">estrangelo edessa</option>
+                <option value="fantasy">fantasy</option>
+                <option value="flat brush">flat brush</option>
+                <option value="footlight mt light">footlight mt light</option>
+                <option value="franklin gothic medium">franklin gothic medium</option>
+                <option value="futurablack bt">futurablack bt</option>
+                <option value="futuralight bt">futuralight bt</option>
+                <option value="gabriola">gabriola</option>
+                <option value="garamond">garamond</option>
+                <option value="gautami">gautami</option>
+                <option value="gaze">gaze</option>
+                <option value="geneva">geneva</option>
+                <option value="georgia">georgia</option>
+                <option value="georgia italic impact">georgia italic impact</option>
+                <option value="geotype tt">geotype tt</option>
+                <option value="helterskelter">helterskelter</option>
+                <option value="helvetica">helvetica</option>
+                <option value="herman">herman</option>
+                <option value="highlight let">highlight let</option>
+                <option value="impact">impact</option>
+                <option value="jester">jester</option>
+                <option value="joan">joan</option>
+                <option value="john handy let">john handy let</option>
+                <option value="jokerman let">jokerman let</option>
+                <option value="kelt">kelt</option>
+                <option value="kids">kids</option>
+                <option value="kino mt">kino mt</option>
+                <option value="la bamba let">la bamba let</option>
+                <option value="latha">latha</option>
+                <option value="lithograph">lithograph</option>
+                <option value="lucida console">lucida console</option>
+                <option value="lucida sans console">lucida sans console</option>
+                <option value="lucida sans unicode">lucida sans unicode</option>
+                <option value="map symbols">map symbols</option>
+                <option value="marlett">marlett</option>
+                <option value="matteroffact">matteroffact</option>
+                <option value="matisse itc">matisse itc</option>
+                <option value="matura mt script capitals">matura mt script capitals</option>
+                <option value="mekanik let">mekanik let</option>
+                <option value="modern">modern</option>
+                <option value="modern ms sans serif">modern ms sans serif</option>
+                <option value="monaco">monaco</option>
+                <option value="monospace">monospace</option>
+                <option value="monotype sorts">monotype sorts</option>
+                <option value="ms linedraw">ms linedraw</option>
+                <option value="ms sans serif">ms sans serif</option>
+                <option value="ms serif">ms serif</option>
+                <option value="mv boli">mv boli</option>
+                <option value="new york">new york</option>
+                <option value="nyala">nyala</option>
+                <option value="olddreadfulno7 bt">olddreadfulno7 bt</option>
+                <option value="orange let">orange let</option>
+                <option value="palatino">palatino</option>
+                <option value="palatino linotype">palatino linotype</option>
+                <option value="playbill">playbill</option>
+                <option value="pump demi bold let">pump demi bold let</option>
+                <option value="puppylike">puppylike</option>
+                <option value="roland">roland</option>
+                <option value="roman">roman</option>
+                <option value="sans-serif">sans-serif</option>
+                <option value="script">script</option>
+                <option value="scripts">scripts</option>
+                <option value="scruff let">scruff let</option>
+                <option value="segoe print">segoe print</option>
+                <option value="segoe script">segoe script</option>
+                <option value="segoe ui">segoe ui</option>
+                <option value="serif">serif</option>
+                <option value="short hand">short hand</option>
+                <option value="signs normal">signs normal</option>
+                <option value="simplex">simplex</option>
+                <option value="simpson">simpson</option>
+                <option value="small fonts">small fonts</option>
+                <option value="stylus bt">stylus bt</option>
+                <option value="superfrench">superfrench</option>
+                <option value="surfer">surfer</option>
+                <option value="swis721 bt">swis721 bt</option>
+                <option value="swis721 blkoul bt">swis721 blkoul bt</option>
+                <option value="symap">symap</option>
+                <option value="symbol (symbol)">symbol (symbol)</option>
+                <option value="tahoma">tahoma</option>
+                <option value="technic">technic</option>
+                <option value="tempus sans itc">tempus sans itc</option>
+                <option value="terk">terk</option>
+                <option value="times">times</option>
+                <option value="times new roman">times new roman</option>
+                <option value="trebuchet ms">trebuchet ms</option>
+                <option value="trendy">trendy</option>
+                <option value="txt">txt</option>
+                <option value="tunga">tunga</option>
+                <option value="verdana">verdana</option>
+                <option value="victorian let">victorian let</option>
+                <option value="vineta bt">vineta bt</option>
+                <option value="vivian">vivian</option>
+                <option value="webdings (webdings)">webdings (webdings)</option>
+                <option value="western">western</option>
+                <option value="westminster">westminster</option>
+                <option value="westwood let">westwood let</option>
+                <option value="wide latin">wide latin</option>
+                <option value="wingdings (wingding)">wingdings (wingding)</option>
+                <option value="zapfellipt bt">zapfellipt bt</option>
+            </select><select class="col-3 mx-2" id="numbers" title="розмір шрифту" v-on:change="numbers">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option selected value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+                <option value="28">28</option>
+                <option value="30">30</option>
+            </select></li>
+            <li class="p-2 ui-state-default d-flex align-items-center justify-content-between"><span
+                    class="counts_el d-flex align-items-center justify-content-between"><a
+                    class="mx-2 button-style arrow_drop_up d-flex align-items-center justify-content-center"
+                    v-on:click="count_up" href="javascript:void(0);" title="збільшити шрифт">A<i class="material-icons">arrow_drop_up</i></a><a
+                    class="mx-2 button-style arrow_drop_down d-flex align-items-center justify-content-center"
+                    v-on:click="count_down" href="javascript:void(0);" title="зменьшити шрифт">A<i
+                    class="material-icons">arrow_drop_down</i></a></span></li>
+            <li class="p-2 ui-state-default d-flex align-items-center justify-content-between"><a
+                    class="mx-2 button-style d-flex align-items-center justify-content-center" id="format_color_fill"
+                    href="javascript:void(0);" title="колір заливки"><i class="material-icons format_color_fill">format_color_fill</i><input
+                    class="favcolor" v-on:change="format_color_fill" type="color" name="favcolor" list="bg-colors">
+                <datalist id="bg-colors">
+                    <option>#dc3545</option>
+                    <option>#fd7e14</option>
+                    <option>#ffc107</option>
+                    <option>#28a745</option>
+                    <option>#0CADFF</option>
+                    <option>#007bff</option>
+                    <option>#6f42c1</option>
+                    <option>#000000</option>
+                    <option>#FFFFFF</option>
+                    <option>#6c757d</option>
+                </datalist>
+            </a><a class="mx-2 button-style d-flex align-items-center justify-content-center" id="format_color_text"
+                   href="javascript:void(0);" title="колір тексту"><i class="material-icons format_color_text">format_color_text</i><input
+                    class="favcolors" v-on:change="format_color_text" type="color" name="favcolor" list="colors">
+                <datalist id="colors">
+                    <option>#dc3545</option>
+                    <option>#fd7e14</option>
+                    <option>#ffc107</option>
+                    <option>#28a745</option>
+                    <option>#0CADFF</option>
+                    <option>#007bff</option>
+                    <option>#6f42c1</option>
+                    <option>#000000</option>
+                    <option>#FFFFFF</option>
+                    <option>#6c757d</option>
+                </datalist>
+            </a><a class="mx-2 button-style d-flex align-items-center justify-content-center" id="border_color"
+                   href="javascript:void(0);" title="колір таблиці"><i
+                    class="material-icons border_color">border_color</i><input class="border_colors"
+                                                                               v-on:change="border_color" type="color"
+                                                                               name="favcolor" list="border_colors">
+                <datalist id="border_colors">
+                    <option>#dc3545</option>
+                    <option>#fd7e14</option>
+                    <option>#ffc107</option>
+                    <option>#28a745</option>
+                    <option>#0CADFF</option>
+                    <option>#007bff</option>
+                    <option>#6f42c1</option>
+                    <option>#000000</option>
+                    <option>#FFFFFF</option>
+                    <option>#6c757d</option>
+                </datalist>
+            </a></li>
+            <li class="p-2 ui-state-default d-flex align-items-center justify-content-between"><a
+                    class="mx-2 button-style d-flex align-items-center justify-content-center"
+                    href="javascript:void(0);"><span class="block-style font-weight" title="жирний шрифт"
+                                                     v-on:click="font_weight">Ж</span></a><a
+                    class="mx-2 button-style d-flex align-items-center justify-content-center"
+                    href="javascript:void(0);"><span class="block-style font-style" title="курсивний шрифт"
+                                                     v-on:click="font_style">К</span></a><a
+                    class="mx-2 button-style d-flex align-items-center justify-content-center"
+                    href="javascript:void(0);"><span class="block-style text-decoration" title="підкреслений шрифт"
+                                                     v-on:click="text_decoration">Ч</span></a></li>
+            <li class="p-2 ui-state-default d-flex align-items-center justify-content-between">
+                <!--div.col-6.px-0(class=align_between)--><a
+                    class="mx-2 button-style fa-left fa_align_left d-flex align-items-center justify-content-center"
+                    v-on:click="fa_align_left" href="javascript:void(0);" title="вирівняти по лівому краю"><i
+                    class="fas fas fa-align-left"></i></a><a
+                    class="mx-2 button-style fa-left fa_align_center d-flex align-items-center justify-content-center"
+                    v-on:click="fa_align_center" href="javascript:void(0);" title="вирівняти по центру"><i
+                    class="fas fa-align-center"></i></a><a
+                    class="mx-2 button-style fa-left fa_align_right d-flex align-items-center justify-content-center"
+                    v-on:click="fa_align_right" href="javascript:void(0);" title="вирівняти по правому краю"><i
+                    class="fas fas fa-align-right"></i></a><a
+                    class="mx-2 button-style fa-left fa_align_justify d-flex align-items-center justify-content-center"
+                    v-on:click="fa_align_justify" href="javascript:void(0);" title="вирівняти по ширині"><i
+                    class="fas fa-align-justify"></i></a></li>
+        </ul>
+        <span class="mt-3" id="my_table"><userinfo :table="table"></userinfo></span></div>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script src="js/script.js"></script>
+
+
+
+</body>
+</html>

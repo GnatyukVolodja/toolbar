@@ -1,0 +1,280 @@
+doctype html
+html(xmlns:v-on="http://www.w3.org/1999/xhtml" lang="en")
+    head
+        title table
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        script(type="text/javascript" src="js/jquery.js")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+        link(rel="stylesheet" href="style/style.css")
+
+        link(rel="stylesheet" href="style/jquery-ui.theme.min.css")
+        link(rel="stylesheet" href="style/jquery-ui.structure.min.css")
+        link(rel="stylesheet" href="style/jquery-ui.css")
+        script(type="text/javascript" src="js/jquery-ui.min.js")
+
+        script(src="https://kit.fontawesome.com/a076d05399.js")
+        link(rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" )
+        script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+        script(type="text/javascript" src="js/table2excell.js")
+
+    body
+        include var.jade
+        div.container-fluid
+            div.row.my-3.mx-2
+                ul#sortable.p-0.m-0(class=align_between)
+                    li.p-2.ui-state-default(class=align_between)
+                        a.mx-2.button-style.fa_save(class=align_center)(v-on:click="fa_save" href = "javascript:void(0);" title="зберегти зміни")
+                            i.fas.fa-save
+                        a.mx-2.button-style.print(class=align_center)(v-on:click="print" href = "javascript:void(0);" title="очистити всі формати")
+                            i.fa.fa-print
+                        a.mx-2.button-style.download_table(class=align_center)(v-on:click="download_table" href = "javascript:void(0);" title="завантажити таблицю")
+                            i.material-icons get_app
+                        a#fullscreen.mx-2.button-style(class=align_center)(v-on:click="fullscreen" href = "javascript:void(0);" title="на весь екран")
+                            i.material-icons zoom_out_map
+
+                    li.p-2.ui-state-default(class=align_between)
+                        select#font.col-8.mx-2(title="тип шрифту" v-on:change="font")
+                            //select#font.col-2.mx-1(title="тип шрифту" v-model="value")
+                            option(value="academy engraved let") academy engraved let
+                            option(value="algerian") algerian
+                            option(value="amaze") amaze
+                            option(selected value="arial") arial
+                            option(value="arial black") arial black
+                            option(value="balthazar") balthazar
+                            option(value="bankgothic lt bt") bankgothic lt bt
+                            option(value="bart") bart
+                            option(value="bimini") bimini
+                            option(value="book antiqua") book antiqua
+                            option(value="bookman old style") bookman old style
+                            option(value="braggadocio") braggadocio
+                            option(value="britannic bold") britannic bold
+                            option(value="brush script mt") brush script mt
+                            option(value="calibri") calibri
+                            option(value="cambria") cambria
+                            option(value="candara") candara
+                            option(value="century gothic") century gothic
+                            option(value="century schoolbook") century schoolbook
+                            option(value="chasm") chasm
+                            option(value="chicago") chicago
+                            option(value="colonna mt") colonna mt
+                            option(value="comic sans ms") comic sans ms
+                            option(value="commercialscript bt") commercialscript bt
+                            option(value="consolas") consolas
+                            option(value="constantia") constantia
+                            option(value="coolsville") coolsville
+                            option(value="corbel") corbel
+                            option(value="courier") courier
+                            option(value="courier new") courier new
+                            option(value="cursive") cursive
+                            option(value="dayton") dayton
+                            option(value="desdemona") desdemona
+                            option(value="estrangelo edessa") estrangelo edessa
+                            option(value="fantasy") fantasy
+                            option(value="flat brush") flat brush
+                            option(value="footlight mt light") footlight mt light
+                            option(value="franklin gothic medium") franklin gothic medium
+                            option(value="futurablack bt") futurablack bt
+                            option(value="futuralight bt") futuralight bt
+                            option(value="gabriola") gabriola
+                            option(value="garamond") garamond
+                            option(value="gautami") gautami
+                            option(value="gaze") gaze
+                            option(value="geneva") geneva
+                            option(value="georgia") georgia
+                            option(value="georgia italic impact") georgia italic impact
+                            option(value="geotype tt") geotype tt
+                            option(value="helterskelter") helterskelter
+                            option(value="helvetica") helvetica
+                            option(value="herman") herman
+                            option(value="highlight let") highlight let
+                            option(value="impact") impact
+                            option(value="jester") jester
+                            option(value="joan") joan
+                            option(value="john handy let") john handy let
+                            option(value="jokerman let") jokerman let
+                            option(value="kelt") kelt
+                            option(value="kids") kids
+                            option(value="kino mt") kino mt
+                            option(value="la bamba let") la bamba let
+                            option(value="latha") latha
+                            option(value="lithograph") lithograph
+                            option(value="lucida console") lucida console
+                            option(value="lucida sans console") lucida sans console
+                            option(value="lucida sans unicode") lucida sans unicode
+                            option(value="map symbols") map symbols
+                            option(value="marlett") marlett
+                            option(value="matteroffact") matteroffact
+                            option(value="matisse itc") matisse itc
+                            option(value="matura mt script capitals") matura mt script capitals
+                            option(value="mekanik let") mekanik let
+                            option(value="modern") modern
+                            option(value="modern ms sans serif") modern ms sans serif
+                            option(value="monaco") monaco
+                            option(value="monospace") monospace
+                            option(value="monotype sorts") monotype sorts
+                            option(value="ms linedraw") ms linedraw
+                            option(value="ms sans serif") ms sans serif
+                            option(value="ms serif") ms serif
+                            option(value="mv boli") mv boli
+                            option(value="new york") new york
+                            option(value="nyala") nyala
+                            option(value="olddreadfulno7 bt") olddreadfulno7 bt
+                            option(value="orange let") orange let
+                            option(value="palatino") palatino
+                            option(value="palatino linotype") palatino linotype
+                            option(value="playbill") playbill
+                            option(value="pump demi bold let") pump demi bold let
+                            option(value="puppylike") puppylike
+                            option(value="roland") roland
+                            option(value="roman") roman
+                            option(value="sans-serif") sans-serif
+                            option(value="script") script
+                            option(value="scripts") scripts
+                            option(value="scruff let") scruff let
+                            option(value="segoe print") segoe print
+                            option(value="segoe script") segoe script
+                            option(value="segoe ui") segoe ui
+                            option(value="serif") serif
+                            option(value="short hand") short hand
+                            option(value="signs normal") signs normal
+                            option(value="simplex") simplex
+                            option(value="simpson") simpson
+                            option(value="small fonts") small fonts
+                            option(value="stylus bt") stylus bt
+                            option(value="superfrench") superfrench
+                            option(value="surfer") surfer
+                            option(value="swis721 bt") swis721 bt
+                            option(value="swis721 blkoul bt") swis721 blkoul bt
+                            option(value="symap") symap
+                            option(value="symbol (symbol)") symbol (symbol)
+                            option(value="tahoma") tahoma
+                            option(value="technic") technic
+                            option(value="tempus sans itc") tempus sans itc
+                            option(value="terk") terk
+                            option(value="times") times
+                            option(value="times new roman") times new roman
+                            option(value="trebuchet ms") trebuchet ms
+                            option(value="trendy") trendy
+                            option(value="txt") txt
+                            option(value="tunga") tunga
+                            option(value="verdana") verdana
+                            option(value="victorian let") victorian let
+                            option(value="vineta bt") vineta bt
+                            option(value="vivian") vivian
+                            option(value="webdings (webdings)") webdings (webdings)
+                            option(value="western") western
+                            option(value="westminster") westminster
+                            option(value="westwood let") westwood let
+                            option(value="wide latin") wide latin
+                            option(value="wingdings (wingding)") wingdings (wingding)
+                            option(value="zapfellipt bt") zapfellipt bt
+
+                        select#numbers.col-3.mx-2(title="розмір шрифту" v-on:change="numbers")
+                            option(value="8") 8
+                            option(value="9") 9
+                            option(value="10") 10
+                            option(value="11") 11
+                            option(value="12") 12
+                            option(value="13") 13
+                            option(value="14") 14
+                            option(value="15") 15
+                            option(selected value="16") 16
+                            option(value="17") 17
+                            option(value="18") 18
+                            option(value="19") 19
+                            option(value="20") 20
+                            option(value="21") 21
+                            option(value="22") 22
+                            option(value="23") 23
+                            option(value="24") 24
+                            option(value="26") 26
+                            option(value="28") 28
+                            option(value="30") 30
+
+
+
+                    li.p-2.ui-state-default(class=align_between)
+                        span.counts_el(class=align_between)
+                            a.mx-2.button-style.arrow_drop_up(class=align_center)(v-on:click="count_up" href = "javascript:void(0);" title="збільшити шрифт") A
+                                i.material-icons arrow_drop_up
+                            a.mx-2.button-style.arrow_drop_down(class=align_center)(v-on:click="count_down" href = "javascript:void(0);" title="зменьшити шрифт") A
+                                i.material-icons arrow_drop_down
+
+                    li.p-2.ui-state-default(class=align_between)
+                        a#format_color_fill.mx-2.button-style(class=align_center)(href = "javascript:void(0);" title="колір заливки")
+                            i.material-icons.format_color_fill format_color_fill
+                            input.favcolor(v-on:change="format_color_fill" type="color" name="favcolor" list="bg-colors")
+                            datalist#bg-colors
+                                option #dc3545
+                                option #fd7e14
+                                option #ffc107
+                                option #28a745
+                                option #0CADFF
+                                option #007bff
+                                option #6f42c1
+                                option #000000
+                                option #FFFFFF
+                                option #6c757d
+
+                        a#format_color_text.mx-2.button-style(class=align_center)(href = "javascript:void(0);" title="колір тексту")
+                            i.material-icons.format_color_text format_color_text
+                            input.favcolors(v-on:change="format_color_text" type="color" name="favcolor" list="colors")
+                            datalist#colors
+                                option #dc3545
+                                option #fd7e14
+                                option #ffc107
+                                option #28a745
+                                option #0CADFF
+                                option #007bff
+                                option #6f42c1
+                                option #000000
+                                option #FFFFFF
+                                option #6c757d
+
+                        a#border_color.mx-2.button-style(class=align_center)(href = "javascript:void(0);" title="колір тексту")
+                            i.material-icons.border_color border_color
+                            input.border_colors(v-on:change="border_color" type="color" name="favcolor" list="border_colors")
+                            datalist#border_colors
+                                option #dc3545
+                                option #fd7e14
+                                option #ffc107
+                                option #28a745
+                                option #0CADFF
+                                option #007bff
+                                option #6f42c1
+                                option #000000
+                                option #FFFFFF
+                                option #6c757d
+
+
+                    li.p-2.ui-state-default(class=align_between)
+                        a.mx-2.button-style(class=align_center)(href = "javascript:void(0);")
+                            span.block-style.font-weight(title="жирний шрифт" v-on:click="font_weight") Ж
+                        a.mx-2.button-style(class=align_center)(href = "javascript:void(0);")
+                            span.block-style.font-style(title="курсивний шрифт" v-on:click="font_style") К
+                        a.mx-2.button-style(class=align_center)(href = "javascript:void(0);")
+                            span.block-style.text-decoration(title="підкреслений шрифт" v-on:click="text_decoration") Ч
+
+                    li.p-2.ui-state-default(class=align_between)
+                        //div.col-6.px-0(class=align_between)
+                        a.mx-2.button-style.fa-left.fa_align_left(class=align_center)(v-on:click="fa_align_left" href = "javascript:void(0);" title="вирівняти по лівому краю")
+                            i.fas.fas.fa-align-left
+                        a.mx-2.button-style.fa-left.fa_align_center(class=align_center)(v-on:click="fa_align_center" href = "javascript:void(0);" title="вирівняти по центру")
+                            i.fas.fa-align-center
+                        a.mx-2.button-style.fa-left.fa_align_right(class=align_center)(v-on:click="fa_align_right" href = "javascript:void(0);" title="вирівняти по правому краю")
+                            i.fas.fas.fa-align-right
+                        a.mx-2.button-style.fa-left.fa_align_justify(class=align_center)(v-on:click="fa_align_justify" href = "javascript:void(0);" title="вирівняти по правому краю")
+                            i.fas.fa-align-justify
+
+
+                span#my_table.mt-3
+                    userinfo( :table="table")
+
+
+
+        script(type="text/javascript" src="js/vue.js")
+        script(src="js/script.js")
